@@ -7,6 +7,7 @@ require 'sinatra/jsonp'
 get '/' do
 end
 
+# see http://jsfiddle.net/2f3dn/1/ for use
 get '/:term' do |term|
   doc = Nokogiri::HTML(open("http://lingvo.mail.ru/?lang_id=1033&translate=%D0%9D%D0%B0%D0%B9%D1%82%D0%B8&text=#{URI.escape(term)}&st=search"))  
 
