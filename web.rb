@@ -19,8 +19,10 @@ get '/:term' do |term|
   json[:entry] = { :text => entry.text, :html => entry.to_s }
 
   type = result.at_css('.P1')
-  json[:type] = { :text => type.text, :html => type.to_s }
-  type.remove
+  if type.css('.comment').any?
+    json[:type] = { :text => type.text, :html => type.to_s }
+    type.remove
+  end
 
   examples = result.css('.P1.optional')
   json[:examples] = []
